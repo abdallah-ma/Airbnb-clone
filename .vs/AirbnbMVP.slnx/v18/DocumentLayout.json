@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{88CC24D5-266F-4400-9531-DDE7AFF635DA}|AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj|c:\\users\\abdallah mahmoud\\desktop\\mvc\\airbnbmvp.api\\airbnbmvp.bll\\services\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88CC24D5-266F-4400-9531-DDE7AFF635DA}|AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj|solutionrelative:airbnbmvp.bll\\services\\bookingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F86FC7BC-6CE9-AB32-F374-FF92661193CD}|AirbnbMvp.API\\AirbnbMVP.API.csproj|c:\\users\\abdallah mahmoud\\desktop\\mvc\\airbnbmvp.api\\airbnbmvp.api\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F86FC7BC-6CE9-AB32-F374-FF92661193CD}|AirbnbMvp.API\\AirbnbMVP.API.csproj|solutionrelative:airbnbmvp.api\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69EA3D2D-3DAE-4254-BF3E-1152C2BD8E6E}|AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj|c:\\users\\abdallah mahmoud\\desktop\\mvc\\airbnbmvp.api\\airbnbmvp.dal\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69EA3D2D-3DAE-4254-BF3E-1152C2BD8E6E}|AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj|solutionrelative:airbnbmvp.dal\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 43,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookingService.cs",
+              "DocumentMoniker": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\Services\\BookingService.cs",
+              "RelativeDocumentMoniker": "AirbnbMVP.BLL\\Services\\BookingService.cs",
+              "ToolTip": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\Services\\BookingService.cs",
+              "RelativeToolTip": "AirbnbMVP.BLL\\Services\\BookingService.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAcwHwAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T18:15:57.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.API\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "AirbnbMVP.API\\Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.API\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "AirbnbMVP.API\\Controllers\\BookingController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T18:15:51.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "AirbnbMVP.DAL\\Repositories\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "AirbnbMVP.DAL\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwCwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T18:09:13.253Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "ListingId": "c1b2c3d4-0003-0000-0000-000000000001",
+    "Url": "/ListingImages/img5.png",
+    "IsCover": true,
+    "SortOrder": 1
+  },
+  {
+    "ListingId": "c1b2c3d4-0003-0000-0000-000000000002",
+    "Url": "/ListingImages/img4.png",
+    "IsCover": true,
+    "SortOrder": 1
+  },
+  {
+    "ListingId": "c1b2c3d4-0003-0000-0000-000000000003",
+    "Url": "/ListingImages/img3.png",
+    "IsCover": true,
+    "SortOrder": 1
+  },
+
+  {
+    "ListingId": "c1b2c3d4-0003-0000-0000-000000000004",
+    "Url": "/ListingImages/img2.png",
+    "IsCover": true,
+    "SortOrder": 1
+  },
+
+  {
+    "ListingId": "c1b2c3d4-0003-0000-0000-000000000005",
+    "Url": "/ListingImages/img1.png",
+    "IsCover": true,
+    "SortOrder": 1
+  }
+
+]

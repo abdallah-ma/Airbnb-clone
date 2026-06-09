@@ -1,0 +1,58 @@
+ [
+    {
+      "id": "d1b2c3d4-0004-0000-0000-000000000001",
+      "listingId": "c1b2c3d4-0003-0000-0000-000000000001",
+      "guestId": "a1b2c3d4-0001-0000-0000-000000000003",
+      "checkIn": "2024-03-01",
+      "checkOut": "2024-03-05",
+      "numGuests": 2,
+      "totalPrice": 300.00,
+      "status": "Completed",
+      "createdAt": "2024-02-15T00:00:00Z"
+    },
+    {
+      "id": "d1b2c3d4-0004-0000-0000-000000000002",
+      "listingId": "c1b2c3d4-0003-0000-0000-000000000002",
+      "guestId": "a1b2c3d4-0001-0000-0000-000000000004",
+      "checkIn": "2024-03-10",
+      "checkOut": "2024-03-15",
+      "numGuests": 5,
+      "totalPrice": 1250.00,
+      "status": "Completed",
+      "createdAt": "2024-02-20T00:00:00Z"
+    },
+    {
+      "id": "d1b2c3d4-0004-0000-0000-000000000003",
+      "listingId": "c1b2c3d4-0003-0000-0000-000000000004",
+      "guestId": "a1b2c3d4-0001-0000-0000-000000000003",
+      "checkIn": "2024-04-01",
+      "checkOut": "2024-04-07",
+      "numGuests": 4,
+      "totalPrice": 1080.00,
+      "status": "Confirmed",
+      "createdAt": "2024-03-10T00:00:00Z"
+    },
+    {
+      "id": "d1b2c3d4-0004-0000-0000-000000000004",
+      "listingId": "c1b2c3d4-0003-0000-0000-000000000005",
+      "guestId": "a1b2c3d4-0001-0000-0000-000000000004",
+      "checkIn": "2024-05-01",
+      "checkOut": "2024-05-03",
+      "numGuests": 2,
+      "totalPrice": 190.00,
+      "status": "Pending",
+      "createdAt": "2024-04-15T00:00:00Z"
+    },
+    {
+      "id": "d1b2c3d4-0004-0000-0000-000000000005",
+      "listingId": "c1b2c3d4-0003-0000-0000-000000000003",
+      "guestId": "a1b2c3d4-0001-0000-0000-000000000003",
+      "checkIn": "2024-03-20",
+      "checkOut": "2024-03-22",
+      "numGuests": 1,
+      "totalPrice": 120.00,
+      "status": "Cancelled",
+      "createdAt": "2024-03-01T00:00:00Z"
+    }
+  ]
+

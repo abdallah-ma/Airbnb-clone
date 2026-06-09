@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AirbnbMvp.API/AirbnbMVP.API.csproj" />
+  <Project Path="AirbnbMVP.BLL/AirbnbMVP.BLL.csproj" Id="88cc24d5-266f-4400-9531-dde7aff635da" />
+  <Project Path="AirbnbMVP.DAL/AirbnbMVP.DAL.csproj" Id="69ea3d2d-3dae-4254-bf3e-1152c2bd8e6e" />
+</Solution>

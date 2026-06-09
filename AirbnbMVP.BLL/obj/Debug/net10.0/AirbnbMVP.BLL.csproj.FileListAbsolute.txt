@@ -1,0 +1,15 @@
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMVP.BLL.csproj.AssemblyReference.cache
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMVP.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMVP.BLL.AssemblyInfoInputs.cache
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMVP.BLL.AssemblyInfo.cs
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMVP.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\bin\Debug\net10.0\AirbnbMVP.BLL.deps.json
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\bin\Debug\net10.0\AirbnbMVP.BLL.dll
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\bin\Debug\net10.0\AirbnbMVP.BLL.pdb
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\bin\Debug\net10.0\AirbnbMVP.DAL.dll
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\bin\Debug\net10.0\AirbnbMVP.DAL.pdb
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMV.BBE95AD7.Up2Date
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMVP.BLL.dll
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\refint\AirbnbMVP.BLL.dll
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\AirbnbMVP.BLL.pdb
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.BLL\obj\Debug\net10.0\ref\AirbnbMVP.BLL.dll

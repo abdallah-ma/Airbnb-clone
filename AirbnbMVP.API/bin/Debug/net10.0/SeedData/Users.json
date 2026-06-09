@@ -1,0 +1,52 @@
+[
+    {
+      "id": "a1b2c3d4-0001-0000-0000-000000000001",
+      "email": "ahmed.hassan@email.com",
+      "firstName": "Ahmed",
+      "lastName": "Hassan",
+      "phoneNumber": "+201001234567",
+      "bio": "Passionate traveler and host with 5 years of experience.",
+      "isHost": true,
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "a1b2c3d4-0001-0000-0000-000000000002",
+      "email": "sara.ali@email.com",
+      "firstName": "Sara",
+      "lastName": "Ali",
+      "phoneNumber": "+201009876543",
+      "bio": "Love exploring new places and meeting new people.",
+      "isHost": true,
+      "createdAt": "2024-01-05T00:00:00Z"
+    },
+    {
+      "id": "a1b2c3d4-0001-0000-0000-000000000003",
+      "email": "john.doe@email.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phoneNumber": "+11234567890",
+      "bio": "Frequent traveler for work and leisure.",
+      "isHost": false,
+      "createdAt": "2024-01-10T00:00:00Z"
+    },
+    {
+      "id": "a1b2c3d4-0001-0000-0000-000000000004",
+      "email": "maria.garcia@email.com",
+      "firstName": "Maria",
+      "lastName": "Garcia",
+      "phoneNumber": "+34612345678",
+      "bio": "Explorer at heart, always looking for cozy stays.",
+      "isHost": false,
+      "createdAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "id": "a1b2c3d4-0001-0000-0000-000000000005",
+      "email": "omar.khalil@email.com",
+      "firstName": "Omar",
+      "lastName": "Khalil",
+      "phoneNumber": "+201551234567",
+      "bio": "Host and traveler. I love welcoming guests to Cairo.",
+      "isHost": true,
+      "createdAt": "2024-01-20T00:00:00Z"
+    }
+  ]

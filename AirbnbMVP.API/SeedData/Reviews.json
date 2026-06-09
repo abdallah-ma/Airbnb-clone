@@ -1,0 +1,43 @@
+[
+    {
+      "id": "e1b2c3d4-0005-0000-0000-000000000001",
+      "bookingId": "d1b2c3d4-0004-0000-0000-000000000001",
+      "reviewerId": "a1b2c3d4-0001-0000-0000-000000000003",
+      "revieweeId": "a1b2c3d4-0001-0000-0000-000000000001",
+      "rating": 5,
+      "comment": "Amazing apartment with breathtaking Nile views. Ahmed was a fantastic host, very responsive and helpful. Would definitely stay again!",
+      "reviewType": "GuestToHost",
+      "createdAt": "2024-03-06T00:00:00Z"
+    },
+    {
+      "id": "e1b2c3d4-0005-0000-0000-000000000002",
+      "bookingId": "d1b2c3d4-0004-0000-0000-000000000001",
+      "reviewerId": "a1b2c3d4-0001-0000-0000-000000000001",
+      "revieweeId": "a1b2c3d4-0001-0000-0000-000000000003",
+      "rating": 5,
+      "comment": "John was a wonderful guest. Very clean and respectful. Welcome back anytime!",
+      "reviewType": "HostToGuest",
+      "createdAt": "2024-03-06T00:00:00Z"
+    },
+    {
+      "id": "e1b2c3d4-0005-0000-0000-000000000003",
+      "bookingId": "d1b2c3d4-0004-0000-0000-000000000002",
+      "reviewerId": "a1b2c3d4-0001-0000-0000-000000000004",
+      "revieweeId": "a1b2c3d4-0001-0000-0000-000000000001",
+      "rating": 4,
+      "comment": "Beautiful villa with a great pool. The host was very accommodating. Only minor issue was the parking space was a bit tight.",
+      "reviewType": "GuestToHost",
+      "createdAt": "2024-03-16T00:00:00Z"
+    },
+    {
+      "id": "e1b2c3d4-0005-0000-0000-000000000004",
+      "bookingId": "d1b2c3d4-0004-0000-0000-000000000002",
+      "reviewerId": "a1b2c3d4-0001-0000-0000-000000000001",
+      "revieweeId": "a1b2c3d4-0001-0000-0000-000000000004",
+      "rating": 5,
+      "comment": "Maria and her family were perfect guests. Left the property spotless. Highly recommended!",
+      "reviewType": "HostToGuest",
+      "createdAt": "2024-03-16T00:00:00Z"
+    }
+  ]
+

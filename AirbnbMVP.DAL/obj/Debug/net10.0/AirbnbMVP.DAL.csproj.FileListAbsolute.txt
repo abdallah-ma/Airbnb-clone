@@ -1,0 +1,14 @@
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\bin\Debug\net10.0\AirbnbMVP.DAL.deps.json
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\bin\Debug\net10.0\AirbnbMVP.DAL.runtimeconfig.json
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\bin\Debug\net10.0\AirbnbMVP.DAL.dll
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\bin\Debug\net10.0\AirbnbMVP.DAL.pdb
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.csproj.AssemblyReference.cache
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.AssemblyInfoInputs.cache
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.AssemblyInfo.cs
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.dll
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\refint\AirbnbMVP.DAL.dll
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.pdb
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\AirbnbMVP.DAL.genruntimeconfig.cache
+C:\Users\Abdallah Mahmoud\Desktop\MVC\AirbnbMvp.API\AirbnbMVP.DAL\obj\Debug\net10.0\ref\AirbnbMVP.DAL.dll
