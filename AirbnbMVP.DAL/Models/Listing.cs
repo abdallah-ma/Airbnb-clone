@@ -21,6 +21,7 @@ public class Listing : BaseEntity
     public decimal PricePerNight { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedAt { get; set; }
+    public byte[] RowVersion { get; set; } = null!;
 
     // Navigation
     public User Host { get; set; } = null!;

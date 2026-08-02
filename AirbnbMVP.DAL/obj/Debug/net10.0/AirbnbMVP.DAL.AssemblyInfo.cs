@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AirbnbMVP.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af6b0f4ba3e5472aac15655a5869a4b6ca5f8cfc")]
 [assembly: System.Reflection.AssemblyProductAttribute("AirbnbMVP.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AirbnbMVP.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3276,11 +3276,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\AirbnbMVP.API.csproj",
+      "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj",
       "projectName": "AirbnbMVP.API",
-      "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\AirbnbMVP.API.csproj",
+      "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj",
       "packagesPath": "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\obj\\",
+      "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3304,8 +3304,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj": {
-              "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj"
+            "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj": {
+              "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj"
             }
           }
         }
@@ -3782,5 +3782,17 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

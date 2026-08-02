@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\AirbnbMVP.API.csproj": {}
+    "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\AirbnbMVP.API.csproj": {
+    "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\AirbnbMVP.API.csproj",
+        "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj",
         "projectName": "AirbnbMVP.API",
-        "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\AirbnbMVP.API.csproj",
+        "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj",
         "packagesPath": "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\obj\\",
+        "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -35,8 +35,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj": {
-                "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj"
+              "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj": {
+                "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj"
               }
             }
           }
@@ -514,14 +514,14 @@
         }
       }
     },
-    "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj": {
+    "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj",
+        "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj",
         "projectName": "AirbnbMVP.BLL",
-        "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj",
+        "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\AirbnbMVP.BLL.csproj",
         "packagesPath": "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.BLL\\obj\\",
+        "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -545,8 +545,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj": {
-                "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj"
+              "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj": {
+                "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj"
               }
             }
           }
@@ -875,14 +875,14 @@
         }
       }
     },
-    "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj": {
+    "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj",
         "projectName": "AirbnbMVP.DAL",
-        "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj",
+        "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj",
         "packagesPath": "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\obj\\",
+        "outputPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

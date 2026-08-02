@@ -8,6 +8,7 @@ using AirbnbMVP.BLL.Specifications.Listings;
 using AirbnbMVP.DAL.Interfaces;
 using AirbnbMVP.Models.Bookings;
 using AirbnbMVP.Models.Listings;
+using Microsoft.EntityFrameworkCore;
 
 namespace AirbnbMVP.BLL.Services
 {
@@ -183,7 +184,14 @@ namespace AirbnbMVP.BLL.Services
             listing.Longitude = updatedListing.Longitude ?? listing.Longitude;
 
 
-            await ListingRepository.UpdateAsync(listing);
+            try
+            {
+                await ListingRepository.UpdateAsync(listing);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new ConflictException("This listing was modified by someone else. Please refresh and try again.");
+            }
 
             return new ListingResponseDto()
             {

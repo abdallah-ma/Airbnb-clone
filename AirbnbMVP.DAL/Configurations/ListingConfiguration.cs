@@ -23,6 +23,7 @@ public class ListingConfiguration : IEntityTypeConfiguration<Listing>
         builder.Property(l => l.PricePerNight).HasColumnType("numeric(10,2)");
         builder.Property(l => l.IsActive).HasDefaultValue(true);
         builder.Property(l => l.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+        builder.Property(l => l.RowVersion).IsRowVersion();
 
         builder.HasIndex(l => new { l.City, l.Country });
         builder.HasIndex(l => l.HostId);

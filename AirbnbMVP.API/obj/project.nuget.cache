@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/o1ZtCL6KoM=",
+  "dgSpecHash": "SSzFUWTt+zg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMvp.API\\AirbnbMVP.API.csproj",
+  "projectFilePath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -56,5 +56,18 @@
     "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.4\\system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
     "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.API\\AirbnbMVP.API.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

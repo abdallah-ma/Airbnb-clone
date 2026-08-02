@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sFe7fiNDDxQ=",
+  "dgSpecHash": "yRUdvECheWA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\MVC\\AirbnbMvp.API\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj",
+  "projectFilePath": "C:\\Users\\Abdallah Mahmoud\\Desktop\\airbnb\\AirbnbMVP.DAL\\AirbnbMVP.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\Abdallah Mahmoud\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

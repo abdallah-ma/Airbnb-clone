@@ -9,6 +9,9 @@ using AirbnbMVP.DAL.Interfaces;
 using AirbnbMVP.DAL.Models;
 using AirbnbMVP.Models.Bookings;
 using AirbnbMVP.Models.Listings;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 
 
@@ -39,81 +42,87 @@ namespace AirbnbMVP.BLL.Services
         public async Task<BookingResponseDto> BookListingAsync(BookingRequestDto newBooking, Guid userId)
         {
 
-
             if (newBooking.CheckIn >= newBooking.CheckOut)
                 throw new BadRequestException("Check-out date must be after check-in date.");
 
             if (newBooking.CheckIn < DateOnly.FromDateTime(DateTime.UtcNow))
                 throw new BadRequestException("Check-in date cannot be in the past.");
 
+            await using var dbTransaction = await BookingRepository.BeginTransactionAsync(IsolationLevel.Serializable);
 
-            var listing = await ListingRepository.GetAsync(new GetByIdSpecification<Listing>(newBooking.ListingId)) ?? 
-                          throw new NotFoundException("Listing not found.");
-
-            if (!await ListingRepository.CheckListingAvailabilityBlocks(newBooking.ListingId, newBooking.CheckIn, newBooking.CheckOut))
+            try
             {
-                throw new ConflictException("The listing is not available on the requested dates.");
+                var listing = await ListingRepository.GetAsync(new GetByIdSpecification<Listing>(newBooking.ListingId)) ??
+                              throw new NotFoundException("Listing not found.");
+
+                if (!await ListingRepository.CheckListingAvailabilityBlocks(newBooking.ListingId, newBooking.CheckIn, newBooking.CheckOut))
+                {
+                    throw new ConflictException("The listing is not available on the requested dates.");
+                }
+
+                if (!await ListingRepository.CheckListingBookings(newBooking.ListingId, newBooking.CheckIn, newBooking.CheckOut, null))
+                {
+                    throw new ConflictException("The listing is booked on the requested dates.");
+                }
+
+                if (newBooking.NumGuests > listing.MaxGuests)
+                    throw new BadRequestException($"This listing only allows up to {listing.MaxGuests} guests.");
+
+                if (listing.HostId == userId)
+                    throw new ForbiddenException("You cannot book your own listing.");
+
+                var nights = (newBooking.CheckOut.DayNumber - newBooking.CheckIn.DayNumber);
+                var totalPrice = nights * listing.PricePerNight;
+
+                var booking = new Booking()
+                {
+                    Id = Guid.NewGuid(),
+                    ListingId = listing.Id,
+                    GuestId = userId,
+                    CheckIn = newBooking.CheckIn,
+                    CheckOut = newBooking.CheckOut,
+                    NumGuests = newBooking.NumGuests,
+                    TotalPrice = totalPrice,
+                    Status = BookingStatus.Pending,
+                    CreatedAt = DateTime.Now.Date
+                };
+
+                var transaction = new Transaction()
+                {
+                    BookingId = booking.Id,
+                    PayerId = userId,
+                    PayeeId = listing.HostId,
+                    Amount = totalPrice,
+                    Status = TransactionStatus.Pending,
+                };
+
+                await BookingRepository.AddAsync(booking, saveChanges: false);
+                await TransactionRepository.AddAsync(transaction, saveChanges: false);
+
+                await BookingRepository.SaveAsync();
+                await dbTransaction.CommitAsync();
+
+                var clientSecret = await PaymentService.CreatePaymentIntentAsync(booking.TotalPrice, booking.Id);
+
+                return new BookingResponseDto()
+                {
+                    CheckIn = booking.CheckIn,
+                    CheckOut = booking.CheckOut,
+                    NumGuests = booking.NumGuests,
+                    TotalPrice = booking.TotalPrice,
+                    Status = BookingStatus.Pending,
+                    CreatedAt = DateTime.UtcNow.Date,
+                    ClientSecret = clientSecret.ClientSecret
+                };
             }
-
-            if(!await ListingRepository.CheckListingBookings(newBooking.ListingId, newBooking.CheckIn, newBooking.CheckOut , null))
+            catch (DbUpdateException ex) when (ex.InnerException is SqlException { Number: 1205 })
             {
-                throw new ConflictException("The listing is booked on the requested dates.");
-
+                throw new ConflictException("The booking could not be completed at this time. Please try again.");
             }
-
-
-
-            if (newBooking.NumGuests > listing.MaxGuests)
-                throw new BadRequestException($"This listing only allows up to {listing.MaxGuests} guests.");
-
-
-            if (listing.HostId == userId)
-                throw new ForbiddenException("You cannot book your own listing.");
-
-            var nights = (newBooking.CheckOut.DayNumber - newBooking.CheckIn.DayNumber);
-            var totalPrice = nights * listing.PricePerNight;
-
-            var booking = new Booking()
+            catch (SqlException ex) when (ex.Number == 1205)
             {
-                Id = Guid.NewGuid(),
-                ListingId = listing.Id,
-                GuestId = userId,
-                CheckIn = newBooking.CheckIn,
-                CheckOut = newBooking.CheckOut,
-                NumGuests = newBooking.NumGuests,
-                TotalPrice = totalPrice,
-                Status = BookingStatus.Pending,
-                CreatedAt = DateTime.Now.Date
-            };
-
-            await BookingRepository.AddAsync(booking);
-
-
-            var transaction = new Transaction()
-            {
-                BookingId = booking.Id,
-                PayerId = userId,
-                PayeeId = booking.Listing.HostId,
-                Amount = totalPrice,
-                Status = TransactionStatus.Pending,
-
-            };
-
-            await TransactionRepository.AddAsync(transaction);
-
-            var clientSecret = await PaymentService.CreatePaymentIntentAsync(booking.TotalPrice , booking.Id);
-
-
-            return new BookingResponseDto()
-            {
-                CheckIn = booking.CheckIn,
-                CheckOut = booking.CheckOut,
-                NumGuests = booking.NumGuests,
-                TotalPrice = booking.TotalPrice,
-                Status = BookingStatus.Pending,
-                CreatedAt = DateTime.UtcNow.Date,
-                ClientSecret = clientSecret.ClientSecret
-            };
+                throw new ConflictException("The booking could not be completed at this time. Please try again.");
+            }
         }
 
         public async Task CancelBookingAsync(Guid bookingId, Guid userId)
@@ -285,7 +294,7 @@ namespace AirbnbMVP.BLL.Services
                 throw new ConflictException("The listing is not available on the requested dates.");
             }
 
-            if (!await ListingRepository.CheckListingBookings(booking.ListingId, checkIn , checkOut , null))
+            if (!await ListingRepository.CheckListingBookings(booking.ListingId, checkIn, checkOut, booking.Id))
             {
                 throw new ConflictException("The listing is booked on the requested dates.");
 

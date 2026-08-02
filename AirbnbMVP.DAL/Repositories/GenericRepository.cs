@@ -2,8 +2,10 @@
 using AirbnbMVP.DAL.Models;
 using AirbnbMVP.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace AirbnbMVP.DAL.Repositories
@@ -20,10 +22,16 @@ namespace AirbnbMVP.DAL.Repositories
         {
             Context = context;
         }
-        public async virtual Task<int> AddAsync(T entity)
+        public async virtual Task<int> AddAsync(T entity, bool saveChanges = true)
         {
             await Context.Set<T>().AddAsync(entity);
-            return await Context.SaveChangesAsync();
+
+            if (saveChanges)
+            {
+                return await Context.SaveChangesAsync();
+            }
+
+            return 0;
         }
 
         public async virtual Task<int> DeleteAsync(Guid id)
@@ -49,6 +57,16 @@ namespace AirbnbMVP.DAL.Repositories
         {
             return await SpecificationEvaluator.GetQuery(Context.Set<T>(), specification).ToListAsync();
 
+        }
+
+        public async virtual Task<int> SaveAsync()
+        {
+            return await Context.SaveChangesAsync();
+        }
+
+        public async virtual Task<IDbContextTransaction> BeginTransactionAsync(IsolationLevel isolationLevel)
+        {
+            return await Context.Database.BeginTransactionAsync(isolationLevel);
         }
 
 

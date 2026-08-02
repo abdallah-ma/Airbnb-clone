@@ -18,23 +18,28 @@ namespace AirbnbMVP.DAL.Repositories
 
         public async Task<bool> CheckListingAvailabilityBlocks(Guid listingId, DateOnly checkIn, DateOnly checkOut)
         {
-
-            var listing = await Context.Listings.Include(l => l.Bookings).FirstOrDefaultAsync(l => l.Id == listingId);
-
-            return !listing.AvailabilityBlocks.Any(block => (block.StartDate <= checkIn && checkIn <= block.EndDate) ||
-                                                            (block.StartDate <= checkOut && checkOut <= block.EndDate));
-
-
+            return !await Context.AvailabilityBlocks
+                .AnyAsync(block => block.ListingId == listingId &&
+                                   block.StartDate < checkOut &&
+                                   block.EndDate > checkIn);
         }
 
-        public async Task<bool> CheckListingBookings(Guid listingId, DateOnly checkIn, DateOnly checkOut , Guid? excludedBookingId)
+        public async Task<bool> CheckListingBookings(Guid listingId, DateOnly checkIn, DateOnly checkOut, Guid? excludedBookingId)
         {
-            var listing = await Context.Listings.Include(l => l.Bookings).FirstOrDefaultAsync(l => l.Id == listingId);
+            var excludedId = excludedBookingId ?? Guid.Empty;
 
-            return !listing.Bookings.Any(booking => (booking.CheckIn <= checkIn && checkIn <= booking.CheckOut && booking.Id != excludedBookingId) ||
-                                                    (booking.CheckIn <= checkOut && checkOut <= booking.CheckOut && booking.Id != excludedBookingId)  
-                                                );
+            var hasOverlap = await Context.Bookings
+                .FromSqlInterpolated($"""
+                    SELECT * FROM bookings WITH (UPDLOCK, HOLDLOCK)
+                    WHERE ListingId = {listingId}
+                      AND Status <> 'Cancelled'
+                      AND CheckIn < {checkOut}
+                      AND CheckOut > {checkIn}
+                      AND Id <> {excludedId}
+                    """)
+                .AnyAsync();
 
+            return !hasOverlap;
         }
     }
 }
