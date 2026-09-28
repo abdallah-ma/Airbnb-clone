@@ -12,36 +12,47 @@ using Microsoft.EntityFrameworkCore;
 namespace AirbnbMVP.Tests.Integration.Infrastructure;
 
 /// <summary>
-/// Gives each test class its own throwaway database on the local SQL Server instance
-/// (LocalDB), migrated from the real migration history.
+/// Gives each test class its own throwaway database on a SQL Server instance, migrated
+/// from the real migration history. Defaults to LocalDB on the developer machine; CI sets
+/// AIRBNB_TEST_SQL_* environment variables to target a container (e.g. localhost,1433 with
+/// SQL authentication).
 ///
 /// A real server is required: the booking flow relies on SERIALIZABLE isolation, the
 /// UPDLOCK/HOLDLOCK table hints and rowversion columns, none of which the EF in-memory
 /// provider can emulate.
 /// </summary>
-public abstract class LocalDbTestBase : IAsyncLifetime
+public abstract class SqlServerTestBase : IAsyncLifetime
 {
-    private const string DataSource = @"(localdb)\MSSQLLocalDB";
+    private static readonly TimeSpan DefaultWait = TimeSpan.FromSeconds(90);
 
     private string _databaseName = string.Empty;
 
     protected string ConnectionString { get; private set; } = string.Empty;
 
+    private static string DataSource =>
+        Environment.GetEnvironmentVariable("AIRBNB_TEST_SQL_SERVER") is { Length: > 0 } value
+            ? value
+            : @"(localdb)\MSSQLLocalDB";
+
+    private static string? User =>
+        Environment.GetEnvironmentVariable("AIRBNB_TEST_SQL_USER") is { Length: > 0 } value
+            ? value
+            : null;
+
+    private static string? Password =>
+        Environment.GetEnvironmentVariable("AIRBNB_TEST_SQL_PASSWORD") is { Length: > 0 } value
+            ? value
+            : null;
+
     public virtual async Task InitializeAsync()
     {
         _databaseName = $"AirbnbTests_{Guid.NewGuid():N}";
 
+        await WaitForServerAsync();
+
         await ExecuteOnMasterAsync($"CREATE DATABASE [{_databaseName}]");
 
-        ConnectionString = new SqlConnectionStringBuilder
-        {
-            DataSource = DataSource,
-            InitialCatalog = _databaseName,
-            IntegratedSecurity = true,
-            TrustServerCertificate = true,
-            MultipleActiveResultSets = true,
-            ConnectTimeout = 30
-        }.ConnectionString;
+        ConnectionString = CreateBuilder(_databaseName).ConnectionString;
 
         await using var context = CreateContext();
         await context.Database.MigrateAsync();
@@ -74,14 +85,7 @@ public abstract class LocalDbTestBase : IAsyncLifetime
 
     private async Task ExecuteOnMasterAsync(string sql)
     {
-        var builder = new SqlConnectionStringBuilder
-        {
-            DataSource = DataSource,
-            InitialCatalog = "master",
-            IntegratedSecurity = true,
-            TrustServerCertificate = true,
-            ConnectTimeout = 30
-        };
+        var builder = CreateBuilder("master");
 
         await using var connection = new SqlConnection(builder.ConnectionString);
         await connection.OpenAsync();
@@ -89,6 +93,66 @@ public abstract class LocalDbTestBase : IAsyncLifetime
         command.CommandText = sql;
         command.CommandTimeout = 120;
         await command.ExecuteNonQueryAsync();
+    }
+
+    /// <summary>
+    /// Connection properties are resolved once, in one place, so the authentication mode is
+    /// decided consistently for master and test databases. Setting a User switches to SQL
+    /// authentication; otherwise Windows/integrated security (LocalDB) is used.
+    /// </summary>
+    private static SqlConnectionStringBuilder CreateBuilder(string initialCatalog)
+    {
+        var builder = new SqlConnectionStringBuilder
+        {
+            DataSource = DataSource,
+            InitialCatalog = initialCatalog,
+            TrustServerCertificate = true,
+            MultipleActiveResultSets = true,
+            ConnectTimeout = 30
+        };
+
+        if (User is not null)
+        {
+            builder.UserID = User;
+            builder.Password = Password;
+            builder.IntegratedSecurity = false;
+        }
+        else
+        {
+            builder.IntegratedSecurity = true;
+        }
+
+        return builder;
+    }
+
+    /// <summary>
+    /// SQL Server can take many seconds to become ready (notably a fresh CI container), and
+    /// GitHub Actions does not wait for service health. Poll until a master connection opens
+    /// or fail with a clear error instead of a cryptic login/connect exception later.
+    /// </summary>
+    private static async Task WaitForServerAsync()
+    {
+        var deadline = DateTime.UtcNow + DefaultWait;
+        Exception? last = null;
+
+        while (DateTime.UtcNow < deadline)
+        {
+            try
+            {
+                await using var connection = new SqlConnection(CreateBuilder("master").ConnectionString);
+                await connection.OpenAsync();
+                return;
+            }
+            catch (Exception ex)
+            {
+                last = ex;
+                await Task.Delay(1000);
+            }
+        }
+
+        throw new InvalidOperationException(
+            $"SQL Server at '{DataSource}' was not reachable within {DefaultWait.TotalSeconds:0}s.",
+            last);
     }
 
     /// <summary>Fresh context, so callers can use one per concurrent operation.</summary>

@@ -1,5 +1,12 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+# Builds the solution and runs the two test suites:
+#   - unit:       fast, mocked services, no SQL Server required
+#   - integration: real SQL Server (ephemeral container) - booking/listing
+#                  concurrency relies on SERIALIZABLE, UPDLOCK/HOLDLOCK and
+#                  rowversion, none of which the EF in-memory provider emulates.
+#
+# The integration fixtures are LocalDB-by-default and target a container in CI
+# through AIRBNB_TEST_SQL_* environment variables (see
+# AirbnbMVP.Tests.Integration/Infrastructure/SqlServerTestBase.cs).
 
 name: .NET
 
@@ -9,32 +16,78 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  DOTNET_NOLOGO: "true"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "true"
+
 jobs:
-  build:
+  unit:
+    name: Unit tests
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Restore
+        run: dotnet restore AirbnbMVP.slnx
+      - name: Build
+        run: dotnet build AirbnbMVP.slnx --no-restore
+      - name: Test
+        run: dotnet test AirbnbMVP.Tests.Unit/AirbnbMVP.Tests.Unit.csproj --no-build
+
+  integration:
+    name: Integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     services:
       mssql:
         image: mcr.microsoft.com/mssql/server:2022-latest
         env:
-          ACCEPT_EULA: Y
-          SA_PASSWORD: YourPassword123!
-        options: >-
-          --health-cmd="/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourPassword123! -Q 'SELECT 1'"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+          ACCEPT_EULA: "Y"
+          # The fallback keeps CI working without a configured secret; create the
+          # CI_SA_PASSWORD secret (must satisfy SQL Server password complexity)
+          # to override the throwaway password.
+          SA_PASSWORD: "${{ secrets.CI_SA_PASSWORD || 'YourPassword123!' }}"
         ports:
           - 1433:1433
-    
+        # NOTE: GitHub Actions does NOT wait for container health checks (that
+        # would be `depends_on: service_healthy`, which is GitLab). The
+        # --health-* options below only surface in `docker inspect`; the explicit
+        # "Wait for SQL Server" step plus the fixtures' bounded wait are what
+        # actually gate readiness. The sqlcmd path varies between image tags, so
+        # it is deliberately decorative here.
+        options: >-
+          --health-cmd="/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P '${{ secrets.CI_SA_PASSWORD || 'YourPassword123!' }}' -C -Q 'SELECT 1'"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+          --health-start-period=30s
+    env:
+      AIRBNB_TEST_SQL_SERVER: "localhost,1433"
+      AIRBNB_TEST_SQL_USER: "sa"
+      # Must mirror the service container's SA_PASSWORD.
+      AIRBNB_TEST_SQL_PASSWORD: "${{ secrets.CI_SA_PASSWORD || 'YourPassword123!' }}"
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Wait for SQL Server to listen
+        run: |
+          for i in $(seq 1 45); do
+            if (exec 3<>/dev/tcp/localhost/1433) 2>/dev/null; then
+              echo "SQL Server accepting TCP connections (attempt ${i})"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "SQL Server never opened port 1433 on localhost" >&2
+          exit 1
+      - name: Restore
+        run: dotnet restore AirbnbMVP.slnx
+      - name: Build
+        run: dotnet build AirbnbMVP.slnx --no-restore
+      - name: Test
+        run: dotnet test AirbnbMVP.Tests.Integration/AirbnbMVP.Tests.Integration.csproj --no-build

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AirbnbMVP.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77d00d051f7182e78a812ba8dfe12bba018366c7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+634126a68dc0328394e82cabd04de154cc0e104e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AirbnbMVP.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AirbnbMVP.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

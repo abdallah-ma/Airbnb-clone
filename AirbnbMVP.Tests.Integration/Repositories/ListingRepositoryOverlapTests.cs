@@ -3,7 +3,7 @@ using AirbnbMVP.Tests.Integration.Infrastructure;
 
 namespace AirbnbMVP.Tests.Integration.Repositories;
 
-public class ListingRepositoryOverlapTests : LocalDbTestBase
+public class ListingRepositoryOverlapTests : SqlServerTestBase
 {
     private static readonly DateOnly CheckIn = new(2030, 5, 10);
     private static readonly DateOnly CheckOut = new(2030, 5, 15);

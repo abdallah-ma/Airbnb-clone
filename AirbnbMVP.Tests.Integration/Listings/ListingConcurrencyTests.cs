@@ -9,7 +9,7 @@ namespace AirbnbMVP.Tests.Integration.Listings;
 /// The service-level translation into ConflictException is covered by ListingServiceTests;
 /// what is only observable here is that the rowversion is actually enforced by the engine.
 /// </summary>
-public class ListingConcurrencyTests : LocalDbTestBase
+public class ListingConcurrencyTests : SqlServerTestBase
 {
     private Guid _hostId;
 

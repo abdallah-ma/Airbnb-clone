@@ -14,7 +14,7 @@ namespace AirbnbMVP.Tests.Integration.Bookings;
 /// callers. These are the tests that prove the double-booking fix, because the guarantee
 /// only exists because SERIALIZABLE + UPDLOCK/HOLDLOCK run on a real engine.
 /// </summary>
-public class ConcurrentBookingTests : LocalDbTestBase
+public class ConcurrentBookingTests : SqlServerTestBase
 {
     private const int Workers = 8;
 
