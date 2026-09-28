@@ -53,17 +53,10 @@ jobs:
         ports:
           - 1433:1433
         # NOTE: GitHub Actions does NOT wait for container health checks (that
-        # would be `depends_on: service_healthy`, which is GitLab). The
-        # --health-* options below only surface in `docker inspect`; the explicit
-        # "Wait for SQL Server" step plus the fixtures' bounded wait are what
-        # actually gate readiness. The sqlcmd path varies between image tags, so
-        # it is deliberately decorative here.
-        options: >-
-          --health-cmd="/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P '${{ secrets.CI_SA_PASSWORD || 'YourPassword123!' }}' -C -Q 'SELECT 1'"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=10
-          --health-start-period=30s
+        # would be `depends_on: service_healthy`, which is GitLab), and the
+        # `secrets` context is not available inside `options`, so no --health-cmd
+        # is set here. Readiness is enforced by the "Wait for SQL Server" step
+        # below plus the fixtures' bounded wait.
     env:
       AIRBNB_TEST_SQL_SERVER: "localhost,1433"
       AIRBNB_TEST_SQL_USER: "sa"
